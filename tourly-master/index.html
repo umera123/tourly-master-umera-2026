@@ -1002,7 +1002,34 @@
             <input type="date" id="checkout-search">
         </div>
 
-<button type="button" class="search-now-btn" id="searchNowBtn">
+<button type="button" class="search-now-btn"
+onclick="
+var destination = document.getElementById('destination-search').value;
+
+if (destination === '') {
+    alert('Please select a destination.');
+} else {
+    var cards = document.querySelectorAll('.popular-card');
+    var found = false;
+
+    for (var i = 0; i < cards.length; i++) {
+        if (cards[i].innerText.toLowerCase().includes(destination.toLowerCase())) {
+            cards[i].scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            cards[i].style.animation = 'destinationBlink 0.5s ease-in-out 6';
+
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        alert('Destination not found.');
+    }
+}">
     SEARCH NOW
 </button>
 </section>
