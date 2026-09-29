@@ -1002,50 +1002,7 @@
             <input type="date" id="checkout-search">
         </div>
 
-<button type="button" class="search-now-btn" id="searchNowBtn"
-onclick="
-const destination = document.getElementById('destination-search').value;
-
-if (!destination) {
-    alert('Please select a destination');
-} else {
-    const cards = document.querySelectorAll('.popular-card');
-    let foundCard = null;
-
-    cards.forEach(function(card) {
-        if (card.textContent.toLowerCase().includes(destination.toLowerCase())) {
-            foundCard = card;
-        }
-    });
-
-    if (foundCard) {
-        foundCard.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
-
-        foundCard.style.transition = '0.3s';
-        foundCard.style.boxShadow = '0 0 0 5px red';
-
-        let count = 0;
-        const blink = setInterval(function() {
-            foundCard.style.boxShadow =
-                foundCard.style.boxShadow === 'none'
-                ? '0 0 0 5px red'
-                : 'none';
-
-            count++;
-
-            if (count >= 8) {
-                clearInterval(blink);
-                foundCard.style.boxShadow = 'none';
-            }
-        }, 400);
-
-    } else {
-        alert('Destination not found');
-    }
-}"
+<button type="button" class="search-now-btn" id="searchNowBtn" onclick="searchDestination()">
     SEARCH NOW
 </button>
 </section>
