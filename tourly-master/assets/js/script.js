@@ -44,3 +44,33 @@ window.addEventListener("scroll", function () {
   }
 
 });
+function searchDestination() {
+
+    var selected = document.getElementById("destination-search").value;
+
+    if (selected === "") {
+        alert("Please select a destination.");
+        return;
+    }
+
+    var cards = document.querySelectorAll(".popular-card");
+
+    for (var i = 0; i < cards.length; i++) {
+
+        var card = cards[i];
+
+        if (card.innerText.toLowerCase().includes(selected.toLowerCase())) {
+
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            card.style.animation = "destinationBlink 0.5s 6";
+
+            return;
+        }
+    }
+
+    alert("Destination not found.");
+}
