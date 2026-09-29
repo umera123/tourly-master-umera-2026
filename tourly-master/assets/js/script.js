@@ -96,17 +96,19 @@ function searchDestination() {
                 block: "center"
             });
 
-            card.classList.remove("destination-blink");
+            card.classList.remove("search-blink");
 
             setTimeout(function () {
-                card.classList.add("destination-blink");
+                card.classList.add("search-blink");
             }, 700);
 
             setTimeout(function () {
-                card.classList.remove("destination-blink");
+                card.classList.remove("search-blink");
             }, 4000);
 
-            break;
+            return;
         }
     }
+
+    alert("Destination not found.");
 }
