@@ -3871,3 +3871,21 @@ function searchDestination() {
         transform: scale(1);
     }
 }
+.destination-blink {
+    animation: destinationBlink 0.5s ease-in-out 6;
+}
+
+@keyframes destinationBlink {
+
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
