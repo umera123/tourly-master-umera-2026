@@ -3889,3 +3889,23 @@ function searchDestination() {
         opacity: 1;
     }
 }
+.search-blink {
+    animation: searchBlink 0.5s ease-in-out 6;
+}
+
+@keyframes searchBlink {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.04);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
