@@ -3898,6 +3898,57 @@ document.addEventListener("DOMContentLoaded", function () {
         transform: scale(1);
     }
 }
+      document.addEventListener("DOMContentLoaded", function () {
+
+    var searchButton = document.getElementById("searchNowBtn");
+    var destinationSelect = document.getElementById("destination-search");
+
+    searchButton.addEventListener("click", function () {
+
+        var destination = destinationSelect.value;
+
+        if (destination === "") {
+            alert("Please select a destination.");
+            return;
+        }
+
+        var cards = document.querySelectorAll(".popular-card");
+
+        var found = false;
+
+        cards.forEach(function (card) {
+
+            var cardText = card.textContent.toLowerCase();
+
+            if (cardText.includes(destination.toLowerCase())) {
+
+                found = true;
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                card.classList.remove("destination-highlight");
+
+                setTimeout(function () {
+                    card.classList.add("destination-highlight");
+                }, 500);
+
+                setTimeout(function () {
+                    card.classList.remove("destination-highlight");
+                }, 4000);
+            }
+
+        });
+
+        if (!found) {
+            alert("Destination not found.");
+        }
+
+    });
+
+});
 
 
 
