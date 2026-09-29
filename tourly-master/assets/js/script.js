@@ -74,3 +74,39 @@ function searchDestination() {
 
     alert("Destination not found.");
 }
+function searchDestination() {
+
+    var selected = document.getElementById("destination-search").value;
+
+    if (selected === "") {
+        alert("Please select a destination.");
+        return;
+    }
+
+    var cards = document.querySelectorAll(".popular-card");
+
+    for (var i = 0; i < cards.length; i++) {
+
+        var card = cards[i];
+
+        if (card.textContent.toLowerCase().includes(selected.toLowerCase())) {
+
+            card.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+            card.classList.remove("destination-blink");
+
+            setTimeout(function () {
+                card.classList.add("destination-blink");
+            }, 700);
+
+            setTimeout(function () {
+                card.classList.remove("destination-blink");
+            }, 4000);
+
+            break;
+        }
+    }
+}
