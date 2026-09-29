@@ -1002,32 +1002,48 @@
             <input type="date" id="checkout-search">
         </div>
 
-<button type="button" class="search-now-btn"
+<button type="button" class="search-now-btn" id="searchNowBtn"
 onclick="
-var destination = document.getElementById('destination-search').value;
+const destination = document.getElementById('destination-search').value;
 
-if (destination === '') {
-    alert('Please select a destination.');
+if (!destination) {
+    alert('Please select a destination');
 } else {
-    var cards = document.querySelectorAll('.popular-card');
-    var found = false;
+    const cards = document.querySelectorAll('.popular-card');
+    let foundCard = null;
 
-    for (var i = 0; i < cards.length; i++) {
-        if (cards[i].innerText.toLowerCase().includes(destination.toLowerCase())) {
-            cards[i].scrollIntoView({
-                behavior: 'smooth',
-                block: 'center'
-            });
-
-            cards[i].style.animation = 'destinationBlink 0.5s ease-in-out 6';
-
-            found = true;
-            break;
+    cards.forEach(function(card) {
+        if (card.textContent.toLowerCase().includes(destination.toLowerCase())) {
+            foundCard = card;
         }
-    }
+    });
 
-    if (!found) {
-        alert('Destination not found.');
+    if (foundCard) {
+        foundCard.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+        foundCard.style.transition = '0.3s';
+        foundCard.style.boxShadow = '0 0 0 5px red';
+
+        let count = 0;
+        const blink = setInterval(function() {
+            foundCard.style.boxShadow =
+                foundCard.style.boxShadow === 'none'
+                ? '0 0 0 5px red'
+                : 'none';
+
+            count++;
+
+            if (count >= 8) {
+                clearInterval(blink);
+                foundCard.style.boxShadow = 'none';
+            }
+        }, 400);
+
+    } else {
+        alert('Destination not found');
     }
 }">
     SEARCH NOW
