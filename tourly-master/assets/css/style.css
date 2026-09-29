@@ -3877,6 +3877,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+      .destination-highlight {
+    animation: destinationBlink 0.5s linear 6;
+}
+
+@keyframes destinationBlink {
+
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.03);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 
 
