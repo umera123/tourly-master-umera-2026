@@ -3829,9 +3829,9 @@ footer.footer {
 }
 function searchDestination() {
 
-    var selected = document.getElementById("destination-search").value;
+    var destination = document.getElementById("destination-search").value;
 
-    if (selected === "") {
+    if (destination === "") {
         alert("Please select a destination.");
         return;
     }
@@ -3842,53 +3842,16 @@ function searchDestination() {
 
         var card = cards[i];
 
-        if (card.innerText.toLowerCase().includes(selected.toLowerCase())) {
+        if (card.textContent.toLowerCase().includes(destination.toLowerCase())) {
 
             card.scrollIntoView({
                 behavior: "smooth",
                 block: "center"
             });
 
-            var pin = document.createElement("div");
-            pin.className = "search-map-pin";
-            pin.innerHTML = "📍";
-
-            card.style.position = "relative";
-            card.appendChild(pin);
-
-            setTimeout(function () {
-                pin.remove();
-            }, 3000);
-
             return;
         }
     }
 
     alert("Destination not found.");
-}
-  .search-map-pin {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 42px;
-    z-index: 20;
-    animation: pinDrop 0.8s ease-out;
-}
-
-@keyframes pinDrop {
-    0% {
-        transform: translate(-50%, -80px);
-        opacity: 0;
-    }
-
-    70% {
-        transform: translate(-50%, 10px);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translate(-50%, 0);
-        opacity: 1;
-    }
 }
