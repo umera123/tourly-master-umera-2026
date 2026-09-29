@@ -3962,6 +3962,22 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 1;
     }
 }
+              @keyframes destinationBlink {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.3;
+        transform: scale(1.03);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
 
 
 
